@@ -11,10 +11,8 @@ class ProstagesController extends AbstractController
 
     public function index(): Response
     {	
-		return new Response('<html><body><h1>Bienvenue sur la page d\'accueil de Prostages</h1></body></html>');
-        /*return $this->render('prostages/index.html.twig', [
-            'controller_name' => 'ProstagesController',
-        ]);*/
+		return $this->render('prostages/index.html.twig');
+        
     }
 	
 	public function entreprises(): Response
@@ -28,12 +26,13 @@ class ProstagesController extends AbstractController
 		return new Response('<html><body><h1>Cette page affichera la liste des formations de l\'IUT</h1></body></html>');
 	}	
 	
-		public function stages($id): Response
+	
+	public function stages($id): Response
 	{
 		
 		//return new Response('<html><body><h1>Cette page affichera le descriptif du stage ayant pour identidiant.'$id'.</h1></body></html>');
 		
-		return $this->render('prostages/index.html.twig', 
+		return $this->render('prostages/stages.html.twig', 
 		['idStage' => $id]);
 	}	
 }

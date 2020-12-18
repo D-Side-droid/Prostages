@@ -12,4 +12,4 @@ prostages_Formations:
     
 prostages_Stages:
     path: /stages/{id}
-    controller: App\Controller\ProstagesController::stages
+    controller: App\Controller\ProstagesController::stages 
