@@ -3,13 +3,32 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Prostages{% endblock %}</title>
-		<style> h1 { text-align:center; color:blue; }</style> 
+		<style> h1 { text-align:center; color:green; }</style> 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
         {% block stylesheets %}<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">{% endblock %}
     </head>
     <body>
+		<h1> Bienvenue sur Prostages</h1>
+		<div class="container-fluid">
+			<div class="row"> <!-- Première ligne du grid contenant la barre de navigation -->
+				<div class="col-5 col-sm-5 col-xs-6">
+					<button type="button" class="btn btn-outline-success">Accueil</button>
+				</div>
+				<div class="col-1 col-sm-1 col-xs-6">
+					<button type="button" class="btn btn-outline-success">Formations</button>
+				</div>
+				<div class="col-5 col-sm-5 col-xs-6">
+					<button type="button" class="btn btn-outline-success">Entreprises</button>
+				</div>
+				<div class="col-1 col-sm-1 col-xs-6">
+					<button type="button" class="btn btn-outline-success">Stages</button>
+				</div>
+			</div>
+		</div>
+		<br>
 		<!--Bloc body -->
-		{% block body %}{% endblock %}
+		{% block body %}
+		{% endblock %}
 		<!--Bloc javascripts -->
         {% block javascripts %}<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>{% endblock %}
     </body>
