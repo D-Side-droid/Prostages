@@ -7,8 +7,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
         {% block stylesheets %}<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">{% endblock %}
     </head>
-    <body>
-		{% block head %}<h1> Bienvenue sur Prostages</h1>{% endblock %}
+	<body>
+		{% block head %}<h1>Prostages</h1>{% endblock %}
 		<div class="row">
 			<div class="col-md-12">
 				<nav class="navbar navbar-expand-lg " style="background-color: #e3f2fd;">
@@ -29,26 +29,16 @@
 				</nav>
 			</div>
 		</div>
+{% block body %}
+	{% for EntrepriseCourante in entreprises %}
+			
+			<li class="list-item">
+				<a >
+					{{EntrepriseCourante.nom}}
+				</a>
+			</li>
+
+	{% endfor %}
+
 		
-		<br>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>
-						Stage
-					</th>
-					<th>
-						Entreprise
-					</th>
-					<th>
-						Formation
-					</th>
-				</tr>
-			</thead>
-			<!--Bloc body -->
-			{% block body %}
-			{% endblock %}
-			<!--Bloc javascripts -->
-			{% block javascripts %}<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>{% endblock %}
-	</body>
-</html>
+{% endblock %}

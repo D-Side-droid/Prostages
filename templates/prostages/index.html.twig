@@ -1,13 +1,46 @@
 {% extends 'base.html.twig' %}
 
+
 {% block body %}
+<style> li { text-align:center; color:green; }</style>
 <div class="container-fluid">
 	<ul class="list-group list-group-flush">
-		<li class="list-group-item">Stage</li>
-		<li class="list-group-item">Stage</li>
-		<li class="list-group-item">Stage</li>
-		<li class="list-group-item">Stage</li>
-		<li class="list-group-item">Stage</li>
+		<li class="list-group-item">Cliquez sur un des boutons pour commencer votre recherche de stage !</li>
+
 	</ul>
+	
+
+
+  {% for StageCourant in stages%}
+
+				<tbody>
+					<tr>
+						<td>
+							<a href="{{path('prostages_Stages',{id:StageCourant.id})}}"> {{StageCourant.intitule}} </a>
+						</td>
+
+
+						<td>
+							{{StageCourant.entreprises.nom}}
+						</td>
+
+
+						<td>
+            {% for formationCourante in StageCourant.formation %}
+
+            {{formationCourante.intitule}}
+            {% endfor %}
+
+						</td>
+
+					</tr>
+
+				</tbody>
+
+
+        {% endfor %}
+
+
+			</table>
 		
 {% endblock %}

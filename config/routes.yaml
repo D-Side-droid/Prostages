@@ -2,9 +2,9 @@ prostages_Accueil:
     path: /
     controller: App\Controller\ProstagesController::index
 
-prostages_Entreprises:
+prostages_FiltreEntreprise:
     path: /entreprises
-    controller: App\Controller\ProstagesController::entreprises
+    controller: App\Controller\ProstagesController::Fentreprises
     
 prostages_Formations:
     path: /formations

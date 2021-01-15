@@ -5,32 +5,39 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Formation;
+use App\Entity\Entreprise;
+use App\Entity\Stage;
 
 class ProstagesController extends AbstractController
 {
 
     public function index(): Response
     {	
-		return $this->render('prostages/index.html.twig');
+		
+		$repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
+		$stages = $repositoryStage->findAll();
+		return $this->render('prostages/index.html.twig', ['stages'=>$stages]);
         
     }
 	
-	public function entreprises(): Response
+	public function Fentreprises(): Response
 	{
-		return new Response('<html><body><h1>Cette page affichera la liste des entreprises proposant un stage</h1></body></html>');
+		$repositoryEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
+		$entreprises = $repositoryEntreprise->findAll();
+		return $this->render('prostages/entreprises.html.twig',['entreprises'=>$entreprises]);
 	}	
 	
 	
 	public function formations(): Response
 	{
-		return new Response('<html><body><h1>Cette page affichera la liste des formations de l\'IUT</h1></body></html>');
+		return $this->render('prostages/formations.html.twig');
 	}	
 	
 	
 	public function stages($id): Response
 	{
 		
-		//return new Response('<html><body><h1>Cette page affichera le descriptif du stage ayant pour identidiant.'$id'.</h1></body></html>');
 		
 		return $this->render('prostages/stages.html.twig', 
 		['idStage' => $id]);
