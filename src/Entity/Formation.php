@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\EntrepriseRepository;
+use App\Repository\FormationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=EntrepriseRepository::class)
+ * @ORM\Entity(repositoryClass=FormationRepository::class)
  */
-class Entreprise
+class Formation
 {
     /**
      * @ORM\Id
@@ -20,22 +20,22 @@ class Entreprise
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=40)
+     * @ORM\Column(type="string", length=255)
      */
-    private $nom;
+    private $intitule;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $adresse;
+    private $niveau;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $milieu;
+    private $ville;
 
     /**
-     * @ORM\OneToMany(targetEntity=Stage::class, mappedBy="entreprises")
+     * @ORM\OneToMany(targetEntity=Stage::class, mappedBy="formation")
      */
     private $stages;
 
@@ -49,38 +49,38 @@ class Entreprise
         return $this->id;
     }
 
-    public function getNom(): ?string
+    public function getIntitule(): ?string
     {
-        return $this->nom;
+        return $this->intitule;
     }
 
-    public function setNom(string $nom): self
+    public function setIntitule(string $intitule): self
     {
-        $this->nom = $nom;
+        $this->intitule = $intitule;
 
         return $this;
     }
 
-    public function getAdresse(): ?string
+    public function getNiveau(): ?string
     {
-        return $this->adresse;
+        return $this->niveau;
     }
 
-    public function setAdresse(string $adresse): self
+    public function setNiveau(string $niveau): self
     {
-        $this->adresse = $adresse;
+        $this->niveau = $niveau;
 
         return $this;
     }
 
-    public function getMilieu(): ?string
+    public function getVille(): ?string
     {
-        return $this->milieu;
+        return $this->ville;
     }
 
-    public function setMilieu(string $milieu): self
+    public function setVille(string $ville): self
     {
-        $this->milieu = $milieu;
+        $this->ville = $ville;
 
         return $this;
     }
@@ -97,7 +97,7 @@ class Entreprise
     {
         if (!$this->stages->contains($stage)) {
             $this->stages[] = $stage;
-            $stage->setEntreprises($this);
+            $stage->setFormation($this);
         }
 
         return $this;
@@ -107,8 +107,8 @@ class Entreprise
     {
         if ($this->stages->removeElement($stage)) {
             // set the owning side to null (unless already changed)
-            if ($stage->getEntreprises() === $this) {
-                $stage->setEntreprises(null);
+            if ($stage->getFormation() === $this) {
+                $stage->setFormation(null);
             }
         }
 
