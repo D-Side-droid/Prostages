@@ -4,7 +4,21 @@
 {% block head %}<h1>Prostages</h1>{% endblock %}
 {% block body %}
 
-    <h2>Cette page affichera le descriptif du stage ayant pour identifiant {{ idStage }}</h2>
+
+
+
+ <div class="container">
+  <h2 style="padding-bottom:25px;">Stage "{{ stage.intitule }}"</h2>
+  <ul>
+    <li>Titre : {{ stage.intitule }}</li>
+    <li>Entreprise : {{ stage.entreprises.nom }}</li>
+    <li>Formation(s) : {% for formation in stage.formation %}{{ formation.titre }} | {% endfor %}</li>
+    <li>Email : {{ stage.description }}</li>
+    <li>Adresse : {{ stage.entreprises.adresse }}</li>
+  </ul>
+
+  </div>
+
 	
 	
 {% endblock %}

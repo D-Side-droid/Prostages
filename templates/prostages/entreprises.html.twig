@@ -1,44 +1,35 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Prostages{% endblock %}</title>
-		<style> h1 { text-align:center; color:green; }</style> 
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-        {% block stylesheets %}<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">{% endblock %}
-    </head>
-	<body>
-		{% block head %}<h1>Prostages</h1>{% endblock %}
-		<div class="row">
-			<div class="col-md-12">
-				<nav class="navbar navbar-expand-lg " style="background-color: #e3f2fd;">
-					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-						<ul class="navbar-nav">
-							<li class="nav-item">
-								<a class="nav-link" href="/">Accueil</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="/formations">Formations</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="/entreprises">Entreprises</a>
-							</li>
-						</ul>
+{% extends 'base.html.twig' %}
 
-					</div>
-				</nav>
-			</div>
-		</div>
+
 {% block body %}
+<p style="padding-top:25px;">Liste des Entreprises</p>
+<table class="table table-striped table-bordered" >
+<thead >
+  <tr>
+    <th scope="col">Nom de l'entreprise</th>
+    <th scope="col">Adresse</th>
+	<th scope="col">Milieu</th>
+  </tr>
+</thead>
+
+
 	{% for EntrepriseCourante in entreprises %}
-			
-			<li class="list-item">
-				<a >
-					{{EntrepriseCourante.nom}}
-				</a>
-			</li>
+			<tbody>
+					<tr>
+						<td>
+							<a href="{{path('prostages_StagesParEntreprises',{id:EntrepriseCourante.id})}}">{{EntrepriseCourante.nom}} </a>
+						</td>
+						<td>
+							{{EntrepriseCourante.adresse}}
+						</td>
+						<td>
+							{{EntrepriseCourante.milieu}}
+						</td>
+					</tr>
+			</tbody>
 
 	{% endfor %}
 
+</table>
 		
 {% endblock %}

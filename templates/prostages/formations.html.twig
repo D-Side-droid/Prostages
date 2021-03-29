@@ -1,8 +1,30 @@
 {% extends 'base.html.twig' %}
 
-
-{% block head %}<h1>Prostages</h1>{% endblock %}
 {% block body %}
+<p style="padding-top:25px;">Liste des formations</p>
+<table class="table table-striped table-bordered" >
+<thead >
+  <tr>
+    <th scope="col">Nom de la formation</th>
+    <th scope="col">Niveau</th>
+  </tr>
+</thead>
 
+
+	{% for formationCourante in formations %}
+			<tbody>
+					<tr>
+						<td>
+							<a href="{{path('prostages_StagesParFormations',{id:formationCourante.id})}}">{{formationCourante.intitule}} </a>
+						</td>
+						<td>
+							{{formationCourante.niveau}}
+						</td>
+					</tr>
+			</tbody>
+
+	{% endfor %}
+
+</table>
 		
 {% endblock %}
