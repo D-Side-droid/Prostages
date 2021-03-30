@@ -11,7 +11,7 @@
     <th scope="col">Formation</th>
   </tr>
 </thead>
-  {% for StageCourant in formation.stages%}
+  {% for StageCourant in stages %}
 
 				<tbody>
 					<tr>
@@ -26,7 +26,7 @@
 
 
 						<td>
-            {% for formationCourante in StageCourant.formation %}
+            {% for formationCourante in formation %}
 
 				{{formationCourante.intitule}}
             {% else %}

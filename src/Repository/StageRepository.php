@@ -81,5 +81,21 @@ class StageRepository extends ServiceEntityRepository
        // Exécuter la requête et retourner les résultats
        return $requete->execute();
     }
+	
+	
+	
+	
+    /**
+     * @return Stage[] Returns an array of Stage objects
+     */
+
+     public function findAllOptimized()
+     {
+       $gestionnaireEntite = $this->getEntityManager();
+
+       $requete = $gestionnaireEntite->createQuery('SELECT s,e,f FROM App\Entity\Stage s JOIN s.entreprise e JOIN s.formations f');
+
+       return $requete->execute();
+     }
 
 }

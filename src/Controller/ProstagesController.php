@@ -64,7 +64,7 @@ class ProstagesController extends AbstractController
 	 {
 		$stages = $repositoryStage->findByEntreprise($entreprise);
 		return $this->render('prostages/stagesParEntreprise.html.twig',
-		['entreprise'=>$entreprise]);
+		['entreprise'=>$entreprise,'stages'=>$stages]);
 		
 		
 	 }
@@ -73,10 +73,11 @@ class ProstagesController extends AbstractController
 	/**
 	 * @Route("/StageParFormations/{id}",name="prostages_StagesParFormations")
 	 */
-	 public function stagesParFormations(Formation $formation, FormationRepository $repositoryFormation): Response
+	 public function stagesParFormations(Formation $formation, StageRepository $repositoryStage): Response
 	 {
+		$stages= $repositoryStage->findByFormation($formation);
 		return $this->render('prostages/stagesParFormations.html.twig',
-		['formation'=>$formation]);
+		['formation'=>$formation,'stages'=>$stages]);
 		
 		
 	 }
