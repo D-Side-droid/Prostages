@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+
+{% block head %}<h1>Prostages</h1>{% endblock %}
+{% block body %}
+
+
+
+{{ form_start(vueFormulaire) }}
+{{ form_row(vueFormulaire.nom, {'attr':{'placeholder':"nom de l'entreprise"}})}}
+{{ form_row(vueFormulaire.adresse, {'attr':{'placeholder':"adresse de l'entreprise"}})}}
+{{ form_row(vueFormulaire.milieu, {'attr':{'placeholder':"milieu de l'entreprise"}})}}
+
+<button type="submit" class="btn btn-dark">Enregistrer</button>
+
+{{ form_end(vueFormulaire) }}
+	
+	
+{% endblock %}
