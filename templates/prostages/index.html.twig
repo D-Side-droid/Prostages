@@ -29,12 +29,10 @@
 
 
 						<td>
-            {% for formationCourante in StageCourant.formation %}
+            
 
-				{{formationCourante.intitule}}
-            {% else %}
-				Pas de formations
-			{% endfor %}
+							{{ StageCourant.formation.intitule}}
+
 
 						</td>
 

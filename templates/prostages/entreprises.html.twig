@@ -9,6 +9,7 @@
     <th scope="col">Nom de l'entreprise</th>
     <th scope="col">Adresse</th>
 	<th scope="col">Milieu</th>
+	<th scope="col">Modifier</th>
   </tr>
 </thead>
 
@@ -24,6 +25,9 @@
 						</td>
 						<td>
 							{{EntrepriseCourante.milieu}}
+						</td>
+						<td>
+							<a href="{{ path('prostages_ModifierEntreprise',{id:EntrepriseCourante.id}) }}"><i class="bi bi-pencil-square"></i></a>
 						</td>
 					</tr>
 			</tbody>
