@@ -13,6 +13,8 @@ use App\Repository\EntrepriseRepository;
 use App\Repository\FormationRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Form\EntrepriseType;
+use App\Form\StageType;
 
 class ProstagesController extends AbstractController
 {
@@ -57,6 +59,45 @@ class ProstagesController extends AbstractController
 		['stage' => $stage]);
 	}	
 	
+	
+	
+	
+	/**
+     * @Route("/lesStages/ajouter", name="prostages_AjoutStage")
+     */
+    public function ajouterStage(Request $request, EntityManagerInterface $manager)
+    {
+		 //Création d'une entreprise vierge qui sera remplie par le formulaire
+        $stage = new Stage();
+
+        $formulaireStage = $this->createForm(StageType::class, $stage);
+		
+		 /* On demande au formulaire d'analyser la dernière requête Http. Si le tableau POST contenu
+        dans cette requête contient des variables nom, adresse, etc. alors la méthode handleRequest()
+        récupère les valeurs de ces variables et les affecte à l'objet $entreprise*/
+        $formulaireStage->handleRequest($request);
+
+         if ($formulaireStage->isSubmitted() && $formulaireStage->isValid() )
+         {
+            // Enregistrer l'entreprise en base de données
+            $manager->persist($stage);
+            $manager->flush();
+
+            // Rediriger l'utilisateur vers la page d'accueil
+            return $this->redirectToRoute('prostages_Accueil');
+         }
+        
+        // Afficher la page présentant le formulaire d'ajout d'une entreprise
+        return $this->render('prostages/ajoutStage.html.twig',['vueFormulaire'=>$formulaireStage->createView(), 'action'=>"ajouter"]);
+    }
+	
+	
+	
+	
+	
+	
+	
+	
 	/**
 	 * @Route("/StageParEntreprise/{id}",name="prostages_StagesParEntreprises")
 	 */
@@ -91,12 +132,7 @@ class ProstagesController extends AbstractController
 		 //Création d'une entreprise vierge qui sera remplie par le formulaire
         $entreprise = new Entreprise();
 
-        // Création du formulaire permettant de saisir une entreprise
-        $formulaireEntreprise = $this->createFormBuilder($entreprise)
-        ->add('nom')
-        ->add('adresse')
-        ->add('milieu')
-        ->getForm();
+        $formulaireEntreprise = $this->createForm(EntrepriseType::class, $entreprise);
 		
 		 /* On demande au formulaire d'analyser la dernière requête Http. Si le tableau POST contenu
         dans cette requête contient des variables nom, adresse, etc. alors la méthode handleRequest()
@@ -126,11 +162,7 @@ class ProstagesController extends AbstractController
     public function modifierEntreprise(Request $request, EntityManagerInterface $manager, Entreprise $entreprise)
     {
         // Création du formulaire permettant de saisir une ressource
-        $formulaireEntreprise = $this->createFormBuilder($entreprise)
-        ->add('nom')
-        ->add('adresse')
-        ->add('milieu')
-        ->getForm();
+        $formulaireEntreprise = $this->createForm(EntrepriseType::class, $entreprise);
 		
         /* On demande au formulaire d'analyser la dernière requête Http. Si le tableau POST contenu
         dans cette requête contient des variables titre, descriptif, etc. alors la méthode handleRequest()

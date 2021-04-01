@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+
+{% block head %}<h1>Prostages</h1>{% endblock %}
+{% block body %}
+
+
+<h4> Création d'un stage</h4>
+
+{{ form_start(vueFormulaire) }}
+{{ form_row(vueFormulaire.intitule, {'attr':{'placeholder':"intitulé du stage"}})}}
+{{ form_row(vueFormulaire.description, {'attr':{'placeholder':"description du stage"}})}}
+{{ form_row(vueFormulaire.dateDebut)}}
+{{ form_row(vueFormulaire.duree, {'attr':{'placeholder':"durée du stage"}})}}
+
+<h5> Entreprise </h5>
+{{ form_row(vueFormulaire.entreprises.nom, {'attr':{'placeholder':"nom de l'entreprise"}}) }}
+
+{{ form_row(vueFormulaire.entreprises.adresse, {'attr':{'placeholder':"adresse de l'entreprise"}}) }}
+
+
+{{ form_row(vueFormulaire.entreprises.milieu, {'attr':{'placeholder':"Activité de l'entreprise"}}) }}
+
+<h5> Pour quelle(s) formation(s) ?</h5>
+{{ form_row(vueFormulaire.formation) }}
+<br>
+<button type="submit" style="margin-bottom : 50px;" class="btn btn-dark">Enregistrer</button>
+
+{{ form_end(vueFormulaire) }}
+	
+	
+{% endblock %}
