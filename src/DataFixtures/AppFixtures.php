@@ -7,6 +7,7 @@ use Doctrine\Persistence\ObjectManager;
 use App\Entity\Formation;
 use App\Entity\Entreprise;
 use App\Entity\Stage;
+use App\Entity\User;
 
 
 class AppFixtures extends Fixture
@@ -89,6 +90,23 @@ class AppFixtures extends Fixture
 			$manager->persist($tableauFormation[$numeroFormation]);
 		 }
 		 
+		 
+		 
+		 $paul= new User();
+		 $paul->setUsername("DSide");
+		 $paul->setPrenom("Paul");
+		 $paul->setNom("Massias");
+		 $paul->setRoles(['ROLE_USER','ROLE_ADMIN']);
+		 $paul->setPassword('$2y$10$HoPQqa0QgZzcozCmf.LPbO70uhoBErBRR1nWG84/nmzuJdj35Hbja');
+		 $manager->persist($paul);
+		 
+		 $romain= new User();
+		 $romain->setUsername("RoroElRigolo");
+		 $romain->setPrenom("Romain");
+		 $romain->setNom("Vache");
+		 $romain->setRoles(['ROLE_USER']);
+		 $romain->setPassword('$2y$10$HoPQqa0QgZzcozCmf.LPbO70uhoBErBRR1nWG84/nmzuJdj35Hbja');
+		 $manager->persist($romain);
 
 			
 			
