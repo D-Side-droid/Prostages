@@ -1,5 +1,5 @@
 # Prostages
-Bonjour Monsieur, je tiens a m'excuser d'avance, en effet le site n'est ni très beau ni très abouti.
-J'ai grandement sous-estimé la charge de travail et pensais finir le vendredi.
-Je me rends compte maintenant de mon erreur.
-Sur ce, bonne lecture !
+Bonjour Monsieur, je tiens a m'excuser d'avance, en effet je n'ai pas fini tout les TPs.
+J'aurais aimé aller plus loin mais la semaine à été coriace pour nous.
+Je vous remercie pour les enseignements apportés tout au long du module et vous souhaite une bonne continuation.
+
